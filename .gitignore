@@ -18,6 +18,7 @@ participants.xlsx
 
 # Credentials
 credentials.json
+.env
 
 # Registrations
 Summer_School_2025_Registrations.xlsx
