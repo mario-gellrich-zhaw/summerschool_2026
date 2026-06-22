@@ -23,8 +23,6 @@ credentials.json
 # Registrations
 Summer_School_2025_Registrations.xlsx
 
-# Jupyter Notebooks
-agent_based_modeling_boltzmann_wealth_model.ipynb
-
-# Student exercise folder
-Agent_Based_Modeling_Introduction/agent_based_modeling_mesa/boltzmann_wealth_model/
+# Student exercise folder: keep only the task sheet visible
+Agent_Based_Modeling_Introduction/agent_based_modeling_mesa/boltzmann_wealth_model/*
+!Agent_Based_Modeling_Introduction/agent_based_modeling_mesa/boltzmann_wealth_model/STUDENT_TASKS.md
