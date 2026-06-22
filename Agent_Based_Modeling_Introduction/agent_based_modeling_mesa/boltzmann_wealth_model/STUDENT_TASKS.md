@@ -21,9 +21,26 @@ You'll be graded on whether the model logic is correct, the app works, and you c
 
 The Gini coefficient measures inequality on a scale from 0 (everyone has equal wealth) to close to 1 (one agent holds almost everything). The same formula used in the Mesa example is:
 
-$$G = 1 + \frac{1}{N} - \frac{2}{N \sum_{i=1}^{N} x_i} \sum_{i=1}^{N} (N + 1 - i)\, x_i$$
+$G = 1 + \frac{1}{N} - \frac{2}{N \sum_{i=1}^{N} x_i} \sum_{i=1}^{N} (N + 1 - i)\, x_i$
 
 where $x_1 \le x_2 \le \dots \le x_N$ are the agents' wealth values sorted in ascending order, and $N$ is the number of agents. You're free to compute it however is convenient in your stack, as long as it's mathematically equivalent.
+
+### Relationship to the Lorenz Curve
+
+The Gini coefficient is really just a single number summarizing the **Lorenz curve**. The Lorenz curve plots the cumulative share of total wealth (y-axis) held by the bottom x% of agents, sorted from poorest to richest (x-axis). The straight 45° diagonal is the "line of equality" — what the curve would look like if every agent held the same wealth. The further the actual curve sags below that diagonal, the more unequal the distribution.
+
+<img src="images/lorenz_curve.png" alt="Lorenz curve: the Gini coefficient equals area A divided by the total area of A and B" width="300">
+
+
+*(Source: [Gini coefficient — Wikipedia](https://en.wikipedia.org/wiki/Gini_coefficient))*
+
+As explained on the Wikipedia page above, the Gini coefficient is the ratio of:
+- **Area A** — the area between the line of equality and the Lorenz curve, to
+- **Area A + B** — the total area under the line of equality,
+
+i.e. $G = \dfrac{A}{A+B}$. Since the line of equality forms a triangle of area $\tfrac{1}{2}$ over the unit square, this is equivalent to $G = 2A = 1 - 2B$.
+
+So in your app: if you compute and sort agent wealth, you already have everything needed to also plot the Lorenz curve (cumulative wealth share vs. cumulative population share) alongside the Gini coefficient — the curve is the visual, the Gini number is its numerical summary (0 = curve sits on the diagonal = perfect equality; closer to 1 = curve sags toward the bottom-right corner = high inequality).
 
 ## What Your App Should Be Able to Do
 
