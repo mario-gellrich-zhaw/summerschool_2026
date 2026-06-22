@@ -59,9 +59,8 @@ The repository contains a devcontainer configuration in `.devcontainer/devcontai
 
 On container creation, it:
 
-- creates a Python virtual environment at `ss26env`
 - upgrades `pip`
-- installs all dependencies from `requirements.txt`
+- installs all dependencies from `requirements.txt` into the default Python 3.12 environment in the container
 
 ### Option 2: Local Python Environment
 

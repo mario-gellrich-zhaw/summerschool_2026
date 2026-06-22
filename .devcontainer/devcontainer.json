@@ -24,15 +24,10 @@
                 "files.autoSave": "onFocusChange",
                 "editor.formatOnSave": true,
                 "window.zoomLevel": 0,
-                "python.terminal.activateEnvironment": true,
-                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/ss26env/bin/python",
-                "terminal.integrated.env.linux": {
-                    "VIRTUAL_ENV": "${containerWorkspaceFolder}/ss26env",
-                    "PATH": "${containerWorkspaceFolder}/ss26env/bin:${env:PATH}"
-                }
+                "python.terminal.activateEnvironment": true
             }
         }
     },
 
-    "postCreateCommand": "python -m venv ${containerWorkspaceFolder}/ss26env && ${containerWorkspaceFolder}/ss26env/bin/pip install --upgrade pip && ${containerWorkspaceFolder}/ss26env/bin/pip install -r requirements.txt"
+    "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -r requirements.txt"
 }
