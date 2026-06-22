@@ -1,0 +1,38 @@
+{
+    "name": "Python 3.12 with Jupyter",
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-azuretools.vscode-docker",
+                "ms-python.autopep8",
+                "ms-python.pylint",
+                "analytic-signal.preview-pdf",
+                "grapecity.gc-excelviewer",
+                "github.copilot",
+                "github.copilot-chat",
+                "mechatroner.rainbow-csv",
+                "tal7aouy.icons"
+            ],
+            "settings": {
+                "workbench.colorTheme": "Dark Modern",
+                "workbench.startupEditor": "none",
+                "editor.minimap.enabled": false,
+                "files.autoSave": "onFocusChange",
+                "editor.formatOnSave": true,
+                "window.zoomLevel": 0,
+                "python.terminal.activateEnvironment": true,
+                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/ss26env/bin/python",
+                "terminal.integrated.env.linux": {
+                    "VIRTUAL_ENV": "${containerWorkspaceFolder}/ss26env",
+                    "PATH": "${containerWorkspaceFolder}/ss26env/bin:${env:PATH}"
+                }
+            }
+        }
+    },
+
+    "postCreateCommand": "python -m venv ${containerWorkspaceFolder}/ss26env && ${containerWorkspaceFolder}/ss26env/bin/pip install --upgrade pip && ${containerWorkspaceFolder}/ss26env/bin/pip install -r requirements.txt"
+}

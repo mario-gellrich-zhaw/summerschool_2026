@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conway's Game of Life</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Mesa web app</p>
+      <h1>Conway's Game of Life</h1>
+      <p class="subtitle">Build patterns, press run, and watch simple local rules produce rich global behavior.</p>
+    </div>
+    <div class="badge-cluster">
+      <div class="badge">
+        <span>Step</span>
+        <strong id="step-value">0</strong>
+      </div>
+      <div class="badge">
+        <span>Alive</span>
+        <strong id="alive-value">0</strong>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="card">
+        <h2>Controls</h2>
+        <div class="button-row">
+          <button id="reset-btn" class="btn btn-primary">Reset</button>
+          <button id="step-btn" class="btn">Step</button>
+          <button id="play-btn" class="btn btn-accent">Run</button>
+        </div>
+        <label>
+          Play interval (ms)
+          <input type="range" id="play-interval" min="40" max="800" step="20" value="140" />
+          <span id="play-interval-value">140</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Model Parameters</h2>
+        <label>Grid width <input type="number" id="width" value="36" min="10" max="80" /></label>
+        <label>Grid height <input type="number" id="height" value="24" min="10" max="80" /></label>
+        <label>Initial fraction alive <input type="number" id="initial_fraction_alive" value="0.24" min="0.01" max="0.95" step="0.01" /></label>
+        <label>
+          Rule
+          <select id="rule">
+            <option value="B3S23" selected>Classic Conway: B3S23</option>
+            <option value="B2S125">Alternative: B2S125</option>
+            <option value="B2S130">Alternative: B2S130</option>
+            <option value="B1S1305">Alternative: B1S1305</option>
+            <option value="B3678S34678">Alternative: B3678S34678</option>
+            <option value="B0123478S01234678">Black/white reversal: B0123478S01234678</option>
+          </select>
+        </label>
+        <label>Seed <input type="number" id="seed" value="42" min="0" max="999999" /></label>
+      </section>
+
+      <section class="card">
+        <h2>Snapshot</h2>
+        <div id="summary-cards" class="summary-grid"></div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <section class="card stage-card">
+        <div class="card-head">
+          <div>
+            <h2>Interactive Grid</h2>
+            <p>Click any cell to toggle it before the simulation.</p>
+          </div>
+        </div>
+        <svg id="grid"></svg>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <h2>Alive Cells over Time</h2>
+            <p>Population history reveals oscillations, extinctions, and bursts.</p>
+          </div>
+        </div>
+        <svg id="chart"></svg>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

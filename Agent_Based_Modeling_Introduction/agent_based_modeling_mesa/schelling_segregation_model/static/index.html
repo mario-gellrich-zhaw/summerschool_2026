@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Schelling Segregation — JS Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="appbar">
+    <h1>Schelling Segregation Model — JS Dashboard</h1>
+    <span class="step-counter">Step: <span id="step-value">0</span></span>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="card">
+        <h2>Controls</h2>
+        <div class="control-row">
+          <button id="reset-btn" class="btn btn-primary">Reset</button>
+          <button id="step-btn" class="btn">Step</button>
+          <button id="play-btn" class="btn btn-accent">Play</button>
+        </div>
+        <label>
+          Play Interval (ms)
+          <input type="range" id="play-interval" min="20" max="1000" step="10" value="100" />
+          <span id="play-interval-value">100</span>
+        </label>
+      </div>
+
+      <div class="card">
+        <h2>Model Parameters</h2>
+        <label>Grid Width <input type="number" id="width" value="20" min="5" max="50" /></label>
+        <label>Grid Height <input type="number" id="height" value="20" min="5" max="50" /></label>
+        <label>Agent Density
+          <input type="number" id="density" value="0.9" min="0.1" max="1.0" step="0.05" />
+        </label>
+        <label>Fraction Minority
+          <input type="number" id="minority_pc" value="0.5" min="0.0" max="1.0" step="0.05" />
+        </label>
+        <label>Homophily
+          <input type="number" id="homophily" value="0.7" min="0.0" max="1.0" step="0.05" />
+        </label>
+        <label>Search Radius
+          <input type="number" id="radius" value="1" min="1" max="5" />
+        </label>
+      </div>
+
+      <div class="card">
+        <h2>Population</h2>
+        <div id="counts" class="counts"></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="card">
+        <h2>Grid</h2>
+        <svg id="grid"></svg>
+      </div>
+      <div class="card">
+        <h2>Happiness over time</h2>
+        <svg id="chart"></svg>
+      </div>
+
+      <div class="card">
+        <h2>Sensitivity Analysis</h2>
+        <p class="hint">
+          Full-factorial sweep of Homophily x Fraction Minority, with repeated random-seeded
+          runs per combination. Other parameters are held at the current Model Parameters
+          values (left).
+        </p>
+        <div class="sensitivity-grid">
+          <fieldset>
+            <legend>Homophily</legend>
+            <label>Min <input type="number" id="sens-homophily-min" value="0.1" step="0.05" /></label>
+            <label>Max <input type="number" id="sens-homophily-max" value="0.9" step="0.05" /></label>
+            <label>Step <input type="number" id="sens-homophily-step" value="0.2" step="0.05" /></label>
+          </fieldset>
+          <fieldset>
+            <legend>Fraction Minority</legend>
+            <label>Min <input type="number" id="sens-minority-min" value="0.1" step="0.05" /></label>
+            <label>Max <input type="number" id="sens-minority-max" value="0.5" step="0.05" /></label>
+            <label>Step <input type="number" id="sens-minority-step" value="0.1" step="0.05" /></label>
+          </fieldset>
+          <fieldset>
+            <legend>Run settings</legend>
+            <label>Replications <input type="number" id="sens-replications" value="5" min="1" max="50" /></label>
+            <label>Max Steps <input type="number" id="sens-steps" value="200" min="10" max="2000" /></label>
+          </fieldset>
+        </div>
+        <div class="control-row">
+          <button id="sensitivity-btn" class="btn btn-primary">Run Sensitivity Analysis</button>
+          <select id="sensitivity-metric">
+            <option value="mean_steps_to_converge">Mean steps to converge</option>
+            <option value="convergence_rate">Convergence rate</option>
+            <option value="mean_final_pct_happy">Mean final % happy</option>
+          </select>
+        </div>
+        <p id="sensitivity-status" class="hint">Idle.</p>
+        <svg id="sensitivity-heatmap"></svg>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

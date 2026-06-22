@@ -1,0 +1,12 @@
+{
+    "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\anaconda3\\envs\\ss26env\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell (ss26env)": {
+            "source": "PowerShell",
+            "args": ["-ExecutionPolicy", "Bypass", "-NoExit", "-Command", "conda activate ss26env"]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell (ss26env)"
+}

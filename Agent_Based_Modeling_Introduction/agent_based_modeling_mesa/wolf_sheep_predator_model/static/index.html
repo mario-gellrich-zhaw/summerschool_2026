@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wolf Sheep — JS Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="appbar">
+    <h1>Wolf Sheep Predation — JS Dashboard</h1>
+    <span class="step-counter">Step: <span id="step-value">0</span></span>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="card">
+        <h2>Controls</h2>
+        <div class="control-row">
+          <button id="reset-btn" class="btn btn-primary">Reset</button>
+          <button id="step-btn" class="btn">Step</button>
+          <button id="play-btn" class="btn btn-accent">Play</button>
+        </div>
+        <label>
+          Play Interval (ms)
+          <input type="range" id="play-interval" min="20" max="1000" step="10" value="200" />
+          <span id="play-interval-value">200</span>
+        </label>
+      </div>
+
+      <div class="card">
+        <h2>Model Parameters</h2>
+        <label>Grid Width <input type="number" id="width" value="20" min="5" max="50" /></label>
+        <label>Grid Height <input type="number" id="height" value="20" min="5" max="50" /></label>
+        <label>Initial Sheep <input type="number" id="initial_sheep" value="100" min="10" max="300" /></label>
+        <label>Initial Wolves <input type="number" id="initial_wolves" value="10" min="5" max="100" /></label>
+        <label>Sheep Reproduction Rate
+          <input type="number" id="sheep_reproduce" value="0.04" min="0.01" max="1" step="0.01" />
+        </label>
+        <label>Wolf Reproduction Rate
+          <input type="number" id="wolf_reproduce" value="0.05" min="0.01" max="1" step="0.01" />
+        </label>
+        <label>Wolf Gain From Food
+          <input type="number" id="wolf_gain_from_food" value="20" min="1" max="50" />
+        </label>
+        <label>Sheep Gain From Food
+          <input type="number" id="sheep_gain_from_food" value="4" min="1" max="10" />
+        </label>
+        <label>Grass Regrowth Time
+          <input type="number" id="grass_regrowth_time" value="20" min="1" max="50" />
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="grass" checked />
+          Grass regrowth enabled?
+        </label>
+      </div>
+
+      <div class="card">
+        <h2>Population</h2>
+        <div id="counts" class="counts"></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="card">
+        <h2>Grid</h2>
+        <svg id="grid"></svg>
+      </div>
+      <div class="card">
+        <h2>Population over time</h2>
+        <svg id="chart"></svg>
+      </div>
+
+      <div class="card">
+        <h2>Sensitivity Analysis</h2>
+        <p class="hint">
+          Full-factorial sweep of Initial Sheep x Initial Wolves population sizes, with
+          repeated random-seeded runs per combination. Other parameters are held at the
+          current Model Parameters values (left).
+        </p>
+        <div class="sensitivity-grid">
+          <fieldset>
+            <legend>Initial Sheep</legend>
+            <label>Min <input type="number" id="sens-sheep-min" value="50" step="1" /></label>
+            <label>Max <input type="number" id="sens-sheep-max" value="200" step="1" /></label>
+            <label>Step <input type="number" id="sens-sheep-step" value="25" step="1" /></label>
+          </fieldset>
+          <fieldset>
+            <legend>Initial Wolves</legend>
+            <label>Min <input type="number" id="sens-wolf-min" value="5" step="1" /></label>
+            <label>Max <input type="number" id="sens-wolf-max" value="25" step="1" /></label>
+            <label>Step <input type="number" id="sens-wolf-step" value="5" step="1" /></label>
+          </fieldset>
+          <fieldset>
+            <legend>Run settings</legend>
+            <label>Replications <input type="number" id="sens-replications" value="5" min="1" max="50" /></label>
+            <label>Steps <input type="number" id="sens-steps" value="100" min="10" max="2000" /></label>
+          </fieldset>
+        </div>
+        <div class="control-row">
+          <button id="sensitivity-btn" class="btn btn-primary">Run Sensitivity Analysis</button>
+          <select id="sensitivity-metric">
+            <option value="mean_final_wolves">Mean final wolves</option>
+            <option value="mean_final_sheep">Mean final sheep</option>
+            <option value="mean_final_grass">Mean final grass patches</option>
+            <option value="wolves_extinct_rate">Wolf extinction rate</option>
+            <option value="sheep_extinct_rate">Sheep extinction rate</option>
+            <option value="grass_extinct_rate">Grass extinction rate</option>
+          </select>
+        </div>
+        <p id="sensitivity-status" class="hint">Idle.</p>
+        <svg id="sensitivity-heatmap"></svg>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
