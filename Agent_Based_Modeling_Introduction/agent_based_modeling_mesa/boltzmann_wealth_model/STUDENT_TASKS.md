@@ -43,6 +43,19 @@ Your web app must allow a user to do the following:
 7. Show the current wealth distribution, for example as a histogram, bar chart, or ordered list.
 8. Show the current simulation step.
 9. Let the user change key parameters before a run.
+10. Include a sensitivity analysis that compares how outcomes change when important model parameters are varied.
+
+## Required Sensitivity Analysis
+
+Your project must include a sensitivity analysis in addition to the main simulation app.
+
+At minimum, the sensitivity analysis must:
+
+1. Vary at least two meaningful model parameters, such as the number of agents, grid width, grid height, or number of simulation steps.
+2. Run multiple simulations for each parameter combination.
+3. Report at least one inequality outcome, including the Gini coefficient.
+4. Present the results clearly, for example as a heatmap, table, chart, or downloadable results file.
+5. Be connected to the web app directly or be clearly documented as a companion analysis workflow.
 
 ## Minimum Parameters
 
@@ -70,7 +83,8 @@ Follow these steps when building the app:
 7. Add a time-series chart for Gini.
 8. Add a wealth-distribution view.
 9. Add parameter inputs and validate them.
-10. Improve the design and usability only after the simulation logic works correctly.
+10. Implement a sensitivity analysis workflow and verify that the reported outcomes are plausible.
+11. Improve the design and usability only after the simulation logic works correctly.
 
 ## What To Demonstrate
 
@@ -81,6 +95,7 @@ Your final submission should make it clear that the following behaviors are pres
 3. Total wealth is conserved unless you explicitly introduce and justify a model extension.
 4. Inequality emerges from repeated local exchanges.
 5. The Gini coefficient reacts to the changing wealth distribution.
+6. The sensitivity analysis shows how selected parameters influence inequality or wealth concentration outcomes.
 
 ## Suggested Validation Checks
 
@@ -91,12 +106,12 @@ Before submitting, check the following:
 3. Some agents may end with little or no wealth, while a small number accumulate more.
 4. Changing the number of agents or grid size should affect encounter frequency and therefore the dynamics.
 5. Resetting the app should create a clean new run.
+6. Repeated runs in the sensitivity analysis should produce interpretable differences across parameter settings.
 
 ## Possible Extensions
 
 If the required version works, you may extend it with:
 
-- sensitivity analysis over selected parameters
 - different neighborhood definitions
 - additional charts or summary statistics
 - export of simulation results
@@ -115,5 +130,6 @@ ArXiv: https://arxiv.org/abs/cond-mat/0001432
 Journal version: https://doi.org/10.1007/s100510070114
 
 Additional background referenced by the Mesa example:
-Milakovic, M. A Statistical Equilibrium Model of Wealth Distribution.
-https://editorialexpress.com/cgi-bin/conference/download.cgi?db_name=SCE2001&paper_id=214
+Adrian A. Dragulescu and Victor M. Yakovenko, Statistical Mechanics of Money, Income, and Wealth: A Short Survey.
+ArXiv: https://arxiv.org/abs/cond-mat/0211175
+PDF: https://arxiv.org/pdf/cond-mat/0211175
