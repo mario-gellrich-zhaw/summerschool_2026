@@ -1,5 +1,7 @@
 # Schelling Segregation Model
 
+Folder: `Agent_Based_Modeling_Introduction/agent_based_modeling_mesa/schelling_segregation_model/`
+
 ## Summary
 
 A model of residential segregation, consisting of agents of two types (type 0 and type 1, a minority/majority split) living on a grid. Each agent is "happy" if at least a `homophily` fraction of its neighbors (within `radius`) share its type. Unhappy agents move to a random empty cell. The model demonstrates Thomas Schelling's famous result: even a mild preference for similar neighbors can produce far more segregation than anyone individually intends.
@@ -9,6 +11,8 @@ The model stops itself once every agent is happy (`model.running` becomes `False
 ## How to Run
 
 The model and agent classes themselves come from the installed `mesa` package, `mesa.examples.basic.schelling`, and are not duplicated here.
+
+From this folder, run:
 
 ```
     $ python server.py
@@ -44,6 +48,7 @@ Homophily and Fraction Minority were chosen as the sweep axes because they're th
 ## Files
 
 * ``server.py``: Flask backend for the dashboard, exposing `/api/reset`, `/api/step`, `/api/state`, `/api/sensitivity`.
+* ``README.md``: folder-level documentation for this app.
 * ``static/``: hand-built JS/D3 frontend (`index.html`, `app.js`, `style.css`) served by `server.py`.
 * ``sensitivity_core.py``: shared per-run simulation logic used by both `server.py` and `sensitivity_analysis.py`.
 * ``sensitivity_analysis.py``: standalone CLI parameter sweep (see Sensitivity Analysis above).

@@ -1,5 +1,7 @@
 # Wolf-Sheep Predation Model
 
+Folder: `Agent_Based_Modeling_Introduction/agent_based_modeling_mesa/wolf_sheep_predator_model/`
+
 ## Summary
 
 A simple ecological model, consisting of three agent types: wolves, sheep, and grass. The wolves and the sheep wander around the grid at random. Wolves and sheep both expend energy moving around, and replenish it by eating. Sheep eat grass, and wolves eat sheep if they end up on the same grid cell.
@@ -17,6 +19,8 @@ The model is tests and demonstrates several Mesa concepts and features:
 ## How to Run
 
 The model and agent classes themselves come from the installed `mesa` package, `mesa.examples.advanced.wolf_sheep`, and are not duplicated here.
+
+From this folder, run:
 
 ```
     $ python server.py
@@ -54,6 +58,7 @@ This prints console pivot tables and saves `sensitivity_analysis_results.csv`. B
 ## Files
 
 * ``server.py``: Flask backend for the dashboard, exposing `/api/reset`, `/api/step`, `/api/state`, `/api/sensitivity`.
+* ``README.md``: folder-level documentation for this app.
 * ``static/``: hand-built JS/D3 frontend (`index.html`, `app.js`, `style.css`) served by `server.py`.
 * ``sensitivity_core.py``: shared per-run simulation logic used by both `server.py` and `sensitivity_analysis.py`.
 * ``sensitivity_analysis.py``: standalone CLI parameter sweep (see Sensitivity Analysis above).
