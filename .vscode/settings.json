@@ -1,5 +1,4 @@
 {
-    "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\anaconda3\\envs\\ss26env\\python.exe",
     "python.terminal.activateEnvironment": true,
     "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.profiles.windows": {
