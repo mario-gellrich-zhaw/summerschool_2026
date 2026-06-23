@@ -32,14 +32,15 @@ Materials for the credit-risk module.
 Introductory materials for agent-based modeling in Python.
 
 - `agent_based_modeling_boltzmann_wealth_model.ipynb`: notebook introduction to wealth distribution dynamics
-- `cellular_automata_conways_game_of_life.ipynb`: notebook for Conway's Game of Life and related rules
 - `agent_based_modeling_agentpy/`: agent-based modeling examples using AgentPy
 - `agent_based_modeling_mesa/`: interactive Mesa-based examples
    - `wolf_sheep_predator_model/`
    - `schelling_segregation_model/`
    - `boltzmann_wealth_model/`
-- `cellular_automata/`
-   - `conways_game_of_life/`: interactive web app for Life-like cellular automata
+- `cellular_automata/`: interactive web app for Life-like cellular automata (Conway's Game of Life and related rules)
+   - `model.py`: custom Life-like automaton logic with configurable rules
+   - `server.py`: Flask backend
+   - `static/`: D3 frontend assets
 - `Slides_Agent_Based_Credit_Risk_Modeling_Workshop.pptx`
 - `Slides_Cellular_Automata_Agent_Based_Modeling.pptx`
 
