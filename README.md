@@ -174,6 +174,7 @@ A merge conflict only happens when you and the upstream repository both changed 
 
 - Before modifying a notebook or script, make a copy with a new name (e.g. `boltzmann_wealth_model.ipynb` → `boltzmann_wealth_model_my_notes.ipynb`) and edit the copy.
 - Keep your own new files and folders anywhere you like — they can never conflict, since they do not exist upstream.
+- Alternatively, create your own folder (e.g. `my_name_work/`) and put your files there, even if they reuse filenames from the course materials (e.g. `my_name_work/model.py`). Git tracks files by their full path, not just the filename, so this never conflicts with `Agent_Based_Modeling_Introduction/.../model.py`. Pick a personal, unique folder name (your name or initials) rather than something generic like `notebooks/`, so the upstream repository never happens to create a folder at that same path.
 
 Following this convention means every sync (`git fetch upstream` + `git merge upstream/master`) stays a clean, automatic merge with nothing to resolve.
 
