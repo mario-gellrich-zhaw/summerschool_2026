@@ -32,6 +32,36 @@ A reasonable agent-based credit risk model needs at least the following pieces, 
   where $p$ is the principal, $r$ is the monthly interest rate, $n$ is the number of months, and $m$ is the resulting monthly payment. Within that fixed payment, the split between interest and principal shifts over time: more of each early payment goes to interest, more of each later payment goes to principal.
 - **Repayment over time**: at each simulation step (month), each borrower's balance is reduced according to the amortization schedule, provided they can pay.
 - **Missed payments and default**: sometimes a borrower cannot make a payment. Decide how that probability is determined (e.g. a fixed/base probability, something that depends on the borrower's situation, or an LLM-based decision). If a borrower misses payments for some number of consecutive months (e.g. three in a row), treat that borrower as having defaulted: remove them from the model and treat their remaining balance as a loss to the lender.
+- **Classes and methods**: a natural way to structure this (you're free to deviate) is three classes — a `Lender` with a method that turns a credit score into an interest rate; a `Borrower` agent holding its own state (credit score, interest rate, principal, balance, consecutive missed payments) with a `step()` method that handles one month's repayment attempt and updates that state; and a `CreditModel` that creates the borrower population and, on each `step()`, calls every borrower's `step()` and removes anyone who has defaulted.
+
+## Example Loan Calculation
+
+A small standalone snippet to get you started with the amortization formula above — check it against https://www.calculator.net/loan-calculator.html before building it into your agents:
+
+```python
+# Input
+# p = loan amount (principle)
+# r = monthly interest rate
+# y = number of years
+# n = total number of months
+
+p = 100000
+r = 0.05 / 12
+y = 30
+n = y*12
+
+# Monthly loan
+m = p * r * (1 + r)**n / ((1 + r)**n - 1)
+
+# Summary of results
+print(f"Principle: {p:.0f} USD")
+print(f"Loan term: {y} years ({y*12} months)")
+print(f"Interest rate: {r*12*100:.2f} %")
+print(f"Monthly loan: {m:.2f} USD")
+print(f"Annually loan: {m*12:.2f} USD")
+print(f"Total interest over {y} years: {m*n - p:.2f} USD")
+print(f"Principle plus interest over {y} years: {m*n:.2f} USD")
+```
 
 ## What Your App Should Be Able to Do
 
