@@ -118,8 +118,8 @@ function renderGrid(state) {
     .attr("width", cell - 1)
     .attr("height", cell - 1)
     .attr("rx", Math.max(1, cell * 0.12))
-    .attr("fill", (d) => (d.alive ? "#8dff85" : "#0b172b"))
-    .attr("stroke", (d) => (d.alive ? "rgba(141,255,133,0.35)" : "rgba(124,196,255,0.08)"))
+    .attr("fill", (d) => (d.alive ? "#3fbf52" : "#e7edf6"))
+    .attr("stroke", (d) => (d.alive ? "rgba(47,158,68,0.4)" : "rgba(29,125,197,0.16)"))
     .attr("cursor", "pointer")
     .on("click", (_, d) => toggleCell(d.x, d.y));
 }
@@ -144,14 +144,14 @@ function renderChart(history, population) {
   const area = d3.area().x((_, i) => x(i)).y0(height).y1((d) => y(d));
   g.append("path")
     .datum(history.alive)
-    .attr("fill", "rgba(99,214,255,0.22)")
+    .attr("fill", "rgba(29,125,197,0.18)")
     .attr("d", area);
 
   const line = d3.line().x((_, i) => x(i)).y((d) => y(d));
   g.append("path")
     .datum(history.alive)
     .attr("fill", "none")
-    .attr("stroke", "#63d6ff")
+    .attr("stroke", "#1d7dc5")
     .attr("stroke-width", 3)
     .attr("d", line);
 }

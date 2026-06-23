@@ -3,6 +3,8 @@
 
 Data science combines computational, statistical, and algorithmic methods to analyze data and generate insights. In this course, these methods are explored through the materials in this repository, with a particular focus on Python, agent-based modeling, simulation analysis, credit risk, and interactive web applications for teaching and experimentation.
 
+> **Note:** Throughout this README, commands shown in ` ```bash ` code blocks must be run in a terminal (e.g., a local shell, the VS Code terminal, or a Codespaces terminal) — not inside a notebook cell. Blocks showing a `http://...` address (` ```text `) are not commands; open that address in a web browser instead.
+
 ## Course Focus
 
 The materials in this repository support two main themes:
@@ -32,14 +34,15 @@ Materials for the credit-risk module.
 Introductory materials for agent-based modeling in Python.
 
 - `agent_based_modeling_boltzmann_wealth_model.ipynb`: notebook introduction to wealth distribution dynamics
-- `cellular_automata_conways_game_of_life.ipynb`: notebook for Conway's Game of Life and related rules
 - `agent_based_modeling_agentpy/`: agent-based modeling examples using AgentPy
 - `agent_based_modeling_mesa/`: interactive Mesa-based examples
    - `wolf_sheep_predator_model/`
    - `schelling_segregation_model/`
    - `boltzmann_wealth_model/`
-- `cellular_automata/`
-   - `conways_game_of_life/`: interactive web app for Life-like cellular automata
+- `cellular_automata/`: interactive web app for Life-like cellular automata (Conway's Game of Life and related rules)
+   - `model.py`: custom Life-like automaton logic with configurable rules
+   - `server.py`: Flask backend
+   - `static/`: D3 frontend assets
 - `Slides_Agent_Based_Credit_Risk_Modeling_Workshop.pptx`
 - `Slides_Cellular_Automata_Agent_Based_Modeling.pptx`
 
@@ -137,3 +140,53 @@ This repository is designed to support hands-on teaching. Students are expected 
 - interpret charts and heatmaps
 - connect model logic to FinTech use cases such as credit risk
 - move from exploratory modeling to small deployable applications
+
+## Syncing Your Fork with the Upstream Repository
+
+If you forked this repository, new course materials added to the original repository will not appear in your fork automatically. To pull in updates without overwriting your own files and folders, sync with the upstream repository using a merge (never `reset --hard` or a fresh re-clone, both of which discard local work).
+
+### One-time setup
+
+Add the original repository as a remote named `upstream`:
+
+```bash
+git remote add upstream https://github.com/mario-gellrich-zhaw/summerschool_2026.git
+```
+
+Verify it was added:
+
+```bash
+git remote -v
+```
+
+### Whenever you want to sync
+
+```bash
+git fetch upstream
+git merge upstream/master
+```
+
+This merges new and changed files from the original repository into your branch. Your own files and folders are untouched, since merge only updates files that exist upstream — it never deletes or overwrites files that are only in your fork.
+
+### Avoiding Merge Conflicts
+
+A merge conflict only happens when you and the upstream repository both changed the same lines of the same file. If you are new to Git, the easiest way to avoid conflicts entirely is to never edit the original course files directly:
+
+- Before modifying a notebook or script, make a copy with a new name (e.g. `boltzmann_wealth_model.ipynb` → `boltzmann_wealth_model_my_notes.ipynb`) and edit the copy.
+- Keep your own new files and folders anywhere you like — they can never conflict, since they do not exist upstream.
+- Alternatively, create your own folder (e.g. `my_name_work/`) and put your files there, even if they reuse filenames from the course materials (e.g. `my_name_work/model.py`). Git tracks files by their full path, not just the filename, so this never conflicts with `Agent_Based_Modeling_Introduction/.../model.py`. Pick a personal, unique folder name (your name or initials) rather than something generic like `notebooks/`, so the upstream repository never happens to create a folder at that same path.
+
+Following this convention means every sync (`git fetch upstream` + `git merge upstream/master`) stays a clean, automatic merge with nothing to resolve.
+
+If you do end up with a merge conflict, Git will report it in the affected file. Open it, resolve the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`), then:
+
+```bash
+git add <resolved-file>
+git commit
+```
+
+Finally, push the synced branch to your fork:
+
+```bash
+git push origin master
+```

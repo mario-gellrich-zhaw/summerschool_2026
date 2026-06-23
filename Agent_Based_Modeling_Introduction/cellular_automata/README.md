@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-Folder: `Agent_Based_Modeling_Introduction/cellular_automata/conways_game_of_life/`
+Folder: `Agent_Based_Modeling_Introduction/cellular_automata/`
 
 ## Summary
 

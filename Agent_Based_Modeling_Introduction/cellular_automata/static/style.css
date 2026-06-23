@@ -1,12 +1,12 @@
 :root {
-  --bg: #08111f;
-  --panel: rgba(10, 20, 38, 0.82);
-  --panel-border: rgba(124, 196, 255, 0.16);
-  --text: #e8f7ff;
-  --muted: #8bb6d1;
-  --primary: #63d6ff;
-  --accent: #9cff57;
-  --shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  --bg: #f4f7fc;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-border: rgba(29, 125, 197, 0.18);
+  --text: #1b2533;
+  --muted: #5b7186;
+  --primary: #1d7dc5;
+  --accent: #2f9e44;
+  --shadow: 0 20px 45px rgba(31, 61, 97, 0.1);
 }
 
 * {
@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
   font-family: "Bahnschrift", "Segoe UI", sans-serif;
   color: var(--text);
-  background: #08111f;
+  background: var(--bg);
 }
 
 .hero {
@@ -58,8 +58,8 @@ body {
 
 .badge {
   min-width: 8.6rem;
-  background: rgba(8, 17, 31, 0.62);
-  border: 1px solid rgba(124, 196, 255, 0.16);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--panel-border);
   border-radius: 22px;
   padding: 0.85rem 1rem;
   box-shadow: var(--shadow);
@@ -129,9 +129,9 @@ input[type="range"] {
 
 input[type="number"],
 select {
-  background: rgba(4, 10, 19, 0.86);
+  background: rgba(255, 255, 255, 0.95);
   color: var(--text);
-  border: 1px solid rgba(124, 196, 255, 0.14);
+  border: 1px solid var(--panel-border);
   border-radius: 12px;
   padding: 0.7rem 0.8rem;
 }
@@ -168,7 +168,7 @@ input[type="range"] {
   border: none;
   border-radius: 999px;
   padding: 0.85rem 1rem;
-  background: #0d1c32;
+  background: #e7edf6;
   color: var(--text);
   font-weight: 700;
   cursor: pointer;
@@ -177,7 +177,7 @@ input[type="range"] {
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 14px 24px rgba(31, 61, 97, 0.18);
 }
 
 .btn-primary {
@@ -186,8 +186,8 @@ input[type="range"] {
 }
 
 .btn-accent {
-  background: linear-gradient(135deg, #83ff72, #46b95d);
-  color: #08111f;
+  background: linear-gradient(135deg, #6fd957, #2f9e44);
+  color: #f6fff2;
 }
 
 .summary-grid {
@@ -198,8 +198,8 @@ input[type="range"] {
 
 .summary-card {
   padding: 0.85rem;
-  background: rgba(8, 17, 31, 0.6);
-  border: 1px solid rgba(124, 196, 255, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--panel-border);
   border-radius: 18px;
 }
 
@@ -218,10 +218,11 @@ input[type="range"] {
 #grid,
 #chart {
   width: 100%;
+  display: block;
 }
 
 #grid {
-  height: 560px;
+  height: 540px;
 }
 
 #chart {
@@ -230,6 +231,7 @@ input[type="range"] {
 
 svg text {
   fill: var(--text);
+  font-family: "IBM Plex Mono", monospace;
 }
 
 @media (max-width: 1050px) {
@@ -261,72 +263,5 @@ svg text {
 
   #grid {
     height: 420px;
-  }
-}
-
-.stat-card .label {
-  display: block;
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
-.stat-card .value {
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.split-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-#grid,
-#alive-chart,
-#density-bar {
-  width: 100%;
-  display: block;
-}
-
-#grid {
-  height: 540px;
-}
-
-#alive-chart,
-#density-bar {
-  height: 300px;
-}
-
-svg text {
-  font-family: "IBM Plex Mono", monospace;
-}
-
-@media (max-width: 1120px) {
-  .layout,
-  .split-row {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    flex-direction: column;
-    align-items: start;
-  }
-}
-
-@media (max-width: 720px) {
-  .shell {
-    padding: 16px;
-  }
-
-  .panel {
-    padding: 18px;
-    border-radius: 22px;
-  }
-
-  .summary-grid {
-    grid-template-columns: 1fr;
   }
 }
